@@ -1,3 +1,4 @@
+import 'package:consultarer/util/dimen.dart';
 import 'package:flutter/material.dart';
 class ConsultButton extends StatelessWidget {
   final String title;
@@ -24,19 +25,25 @@ class ConsultButton extends StatelessWidget {
       child: MaterialButton(
         elevation: 5,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20)
+          borderRadius: BorderRadius.circular(isRow?Dimens.roundedBorderSocial:Dimens.roundedBorder)
         ),
         onPressed: onPressed,
         height: 50,
         color: buttonColor,
         child: isRow?Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(buttonIcon, color: iconColor,),
-            Padding(
-              padding: const EdgeInsets.only(left:10.0),
-              child: Text(title, style: titleStyle,),
+            CircleAvatar(
+                backgroundColor: Colors.white,
+                child: Icon(buttonIcon, color: iconColor,)),
+            Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.only(left:80.0),
+                child: Text(title, style: titleStyle,),
+              ),
             ),
+
           ],
         ): Text(title, style: titleStyle,) ,
       ),

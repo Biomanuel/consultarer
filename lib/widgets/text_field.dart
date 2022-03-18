@@ -1,4 +1,5 @@
 import 'package:consultarer/util/color.dart';
+import 'package:consultarer/util/dimen.dart';
 import 'package:consultarer/util/text_style.dart';
 import 'package:flutter/material.dart';
 class ConsultTextField extends StatelessWidget {
@@ -28,10 +29,10 @@ class ConsultTextField extends StatelessWidget {
         children: [
           Card(
             color: isLogin?Colors.white:ConsultColor.textFieldColor,
-            elevation: isLogin?5:0,
+            // elevation: isLogin?5:0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
-              side: BorderSide.none,
+              borderRadius: BorderRadius.circular(Dimens.roundedBorder),
+              side: BorderSide(color:  Colors.grey),
             ),
             child: TextFormField(
               obscureText: obscureText,

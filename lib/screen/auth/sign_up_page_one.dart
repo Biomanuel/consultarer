@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:consultarer/screen/auth/sign_up_page_four.dart';
 import 'package:consultarer/screen/auth/sign_up_page_three.dart';
 import 'package:consultarer/screen/auth/sign_up_page_two.dart';
 import 'package:consultarer/screen/auth/sign_up_view_model.dart';
@@ -9,8 +10,8 @@ import 'package:consultarer/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-class SignUpTwoScreen extends StatelessWidget {
-  const SignUpTwoScreen({Key? key}) : super(key: key);
+class SignUpPageOne extends StatelessWidget {
+  const SignUpPageOne({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class SignUpTwoScreen extends StatelessWidget {
             builder: (context, model, _) {
               return WillPopScope(
                 onWillPop: () async {
-                  return model.previousPage();
+                  return model.previousPage(context);
                 },
                 child: PageTransitionSwitcher(
                   reverse: model.reverse,
@@ -35,7 +36,42 @@ class SignUpTwoScreen extends StatelessWidget {
                         transitionType: SharedAxisTransitionType.horizontal,
                         child: child);
                   },
-                  child: getCurrentPage(model.currentIndex),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: AuthAppBar(action: Row(children: [Text('Skip', style: textFieldLabel.copyWith(color: Colors.black, fontWeight: FontWeight.w700),), Icon(Icons.arrow_forward, size: 18,)],),onTapAction: (){},),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: getCurrentPage(model.currentIndex),
+                        ),
+                      ),
+                      Container(
+                        height: 70,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ConsultButton(
+                              title: 'Back',
+                              onPressed: () {
+                                model.previousPage(context);
+                              },
+                              buttonColor: Colors.white,
+                            ),
+                            ConsultButton(
+                              title: 'Next',
+                              onPressed: () {
+                                model.switchToPage3();
+                              },
+                              buttonColor: Colors.white,
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               );
               // return SignUpPageOne();
@@ -47,72 +83,14 @@ class SignUpTwoScreen extends StatelessWidget {
   Widget getCurrentPage(int index) {
     switch (index) {
       case 0:
-        return SignUpPageOne();
-      case 1:
         return SignUpPageTwo();
-      case 2:
+      case 1:
         return SignUpPageThree();
+      case 2:
+        return SignUpPageFour();
       default:
-        return SignUpPageOne();
+        return SignUpPageTwo();
     }
   }
 }
 
-class SignUpPageOne extends ViewModelWidget<SignUpViewModel> {
-  const SignUpPageOne({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, model) {
-    final TextEditingController fNameController = TextEditingController();
-    final TextEditingController lNameController = TextEditingController();
-    final TextEditingController phoneController = TextEditingController();
-    final TextEditingController userNameController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            AuthAppBar(
-              action: Icon(Icons.close),
-              onTapAction: () {},
-            ),
-            Column(
-              children: [
-                ConsultTextField(
-                    controller: fNameController, label: 'First Name'),
-                ConsultTextField(
-                    controller: lNameController, label: 'Last Name'),
-                ConsultTextField(
-                  controller: phoneController,
-                  label: 'Phone Number',
-                ),
-                ConsultTextField(
-                    controller: userNameController, label: 'Username'),
-                ConsultTextField(
-                  controller: passwordController,
-                  label: 'Password',
-                  obscureText: model.isVisible,
-                  suffixIcon:
-                      model.isVisible ? Icons.visibility_off : Icons.visibility,
-                  onPressed: () {},
-                ),
-              ],
-            ),
-            ConsultButton(
-              title: 'Create',
-              buttonColor: Colors.red,
-              onPressed: () {
-                model.switchToPage2();
-              },
-              titleStyle: textFieldLabel.copyWith(color: Colors.white),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}

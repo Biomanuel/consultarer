@@ -1,5 +1,5 @@
 import 'package:stacked/stacked.dart';
-
+import 'package:flutter/material.dart';
 class SignUpViewModel extends IndexTrackingViewModel {
   String education = 'High School';
   bool isVisible = true;
@@ -15,12 +15,21 @@ class SignUpViewModel extends IndexTrackingViewModel {
   List<String> categories = [
     'Categories',
   ];
-  List<String> currentEmployments = [
-    'Current Employment',
+  List<String> country = [
+    'Country',
   ];
-  List<String> previousEmployments = [
-    'Previous Employment',
+  List<String> state = [
+    'State/Province',
   ];
+  List<String> employment = [
+    'State/Province',
+  ];
+  List<String> startYear = [
+    '2002',
+  ];List<String> expertise = [
+    'Expertise',
+  ];
+
   // String
   toggleVisibility() {
     isVisible = !isVisible;
@@ -36,8 +45,10 @@ class SignUpViewModel extends IndexTrackingViewModel {
     setIndex(1);
   }
 
-  bool previousPage() {
-    if (currentIndex == 0) return true;
+  bool previousPage(context) {
+    if (currentIndex == 0){
+      Navigator.pop(context);
+    };
     if (currentIndex > 0) setIndex(currentIndex - 1);
     return false;
   }
