@@ -9,8 +9,10 @@ class ConsultTextField extends StatelessWidget {
   final bool obscureText;
   final IconData? suffixIcon;
   final Function()? onPressed;
+  final FormFieldValidator<String>? validator;
   final bool isLogin;
   const ConsultTextField({
+    this.validator,
     this.isLogin = false,
     this.keyboardType,
     required this.label,
@@ -27,26 +29,21 @@ class ConsultTextField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Stack(
         children: [
-          Card(
-            color: isLogin?Colors.white:ConsultColor.textFieldColor,
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Dimens.roundedBorder),
-              side: BorderSide(color:  Colors.grey),
-            ),
-            child: TextFormField(
-              obscureText: obscureText,
-              controller: controller,
-              keyboardType: keyboardType,
-              onTap: () {},
-              enableSuggestions: true,
-              decoration: InputDecoration(
-                label: Text(label, style: textFieldLabel,),
-                hintStyle: textFieldLabel,
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(30),
-                ),
+          TextFormField(
+            validator: validator,
+            obscureText: obscureText,
+            controller: controller,
+            keyboardType: keyboardType,
+            onTap: () {},
+            enableSuggestions: true,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: isLogin?Colors.white:ConsultColor.textFieldColor,
+              hintText: label,
+              hintStyle: textFieldLabel,
+              border: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey),
+                borderRadius: BorderRadius.circular(Dimens.roundedBorder),
               ),
             ),
           ),

@@ -44,40 +44,44 @@ class SignUpDetailsScreen extends StatelessWidget {
                         ),
                         onTapAction: () {},
                       ),
-                      ListView(
-                        shrinkWrap: true,
-                        children: [
-                          ConsultTextField(
-                              controller: fNameController, label: 'First Name'),
-                          ConsultTextField(
-                              controller: lNameController, label: 'Last Name'),
-                          ConsultTextField(
-                            controller: phoneController,
-                            label: 'Phone Number',
-                          ),
-                          ConsultTextField(
-                              controller: userNameController,
-                              label: 'Username'),
-                          ConsultTextField(
-                            controller: passwordController,
-                            label: 'Password',
-                            obscureText: model.isVisible,
-                            suffixIcon: model.isVisible
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                            onPressed: () => model.toggleVisibility(),
-                          ),
-                        ],
+                      Form(
+                        key: model.form,
+                        child: ListView(
+                          shrinkWrap: true,
+                          children: [
+                            ConsultTextField(
+                              validator: (value)=>model.validateDetailsField(value),
+                                controller: fNameController, label: 'First Name'),
+                            ConsultTextField(
+                                validator: (value)=>model.validateDetailsField(value),
+                                controller: lNameController, label: 'Last Name'),
+                            ConsultTextField(
+                              validator: (value)=>model.validateDetailsField(value),
+                              controller: phoneController,
+                              label: 'Phone Number',
+                              keyboardType: TextInputType.phone,
+                            ),
+                            ConsultTextField(
+                                validator: (value)=>model.validateDetailsField(value),
+                                controller: userNameController,
+                                label: 'Username'),
+                            ConsultTextField(
+                              validator: (value)=>model.validateDetailsField(value),
+                              controller: passwordController,
+                              label: 'Password',
+                              obscureText: model.isVisible,
+                              suffixIcon: model.isVisible
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              onPressed: () => model.toggleVisibility(),
+                            ),
+                          ],
+                        ),
                       ),
                       ConsultButton(
                         title: 'Create',
                         buttonColor: Colors.red,
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignUpPageOne()));
-                        },
+                        onPressed: ()=>model.createAccount(),
                         titleStyle:
                             textFieldLabel.copyWith(color: Colors.white),
                       ),

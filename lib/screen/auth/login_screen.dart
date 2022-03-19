@@ -1,6 +1,4 @@
 import 'package:consultarer/screen/auth/sign_up_details.dart';
-import 'package:consultarer/screen/auth/sign_up_page_one.dart';
-import 'package:consultarer/screen/auth/signup_screen.dart';
 import 'package:consultarer/util/assets.dart';
 import 'package:consultarer/util/color.dart';
 import 'package:consultarer/util/text_style.dart';
@@ -23,6 +21,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
   var videoController;
   @override
   void initState() {
@@ -43,7 +42,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -75,21 +75,24 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                         Form(
+                          key: model.form,
                           child: Padding(
                             padding: const EdgeInsets.only(top:30.0),
                             child: Column(
                             children: [
                               ConsultTextField(
+                                validator: (value)=>model.validateEmail(value),
                                 isLogin: true,
-                                controller: model.emailController,
+                                controller:emailController,
                                   label: 'Email or username',
                                 keyboardType: TextInputType.emailAddress,
                               ),
                               ConsultTextField(
+                                validator: (value)=> model.validatePassword(value),
                                 isLogin: true,
                                 label: 'Password',
                                   keyboardType: TextInputType.visiblePassword,
-                                  controller: model.passwordController,
+                                  controller: passwordController,
                                 onPressed: ()=>model.toggleVisibility(),
                                 obscureText: model.obscureText,
                                 suffixIcon: model.obscureText?Icons.visibility_off:Icons.visibility,
@@ -100,8 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         ConsultButton(
                           title: 'Sign In',
-                          onPressed: () => Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => SignUpDetailsScreen())),
+                          onPressed: () => model.Login(),
                           buttonColor: ConsultColor.redButtonColor,
                           titleStyle: buttonStyle,
                         ),

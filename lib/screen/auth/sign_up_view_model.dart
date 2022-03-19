@@ -1,6 +1,12 @@
 import 'package:stacked/stacked.dart';
 import 'package:flutter/material.dart';
+import 'package:stacked_services/stacked_services.dart';
+
+import '../../app/app_setup.locator.dart';
+import '../../app/app_setup.router.dart';
 class SignUpViewModel extends IndexTrackingViewModel {
+  final navigation = locator<NavigationService>();
+  final form = GlobalKey<FormState>();
   bool isVisible = true;
   bool isSwitch = false;
   String education = 'High School';
@@ -87,8 +93,6 @@ selectYear(value){
     countryValue = value;
     notifyListeners();
   }
-
-
   // String
   toggleVisibility() {
     isVisible = !isVisible;
@@ -100,6 +104,9 @@ selectYear(value){
     notifyListeners();
   }
 
+  void switchToPage1() {
+    setIndex(0);
+  }
   void switchToPage2() {
     setIndex(1);
   }
@@ -115,4 +122,20 @@ selectYear(value){
   void switchToPage3() {
     setIndex(2);
   }
+  validateDetailsField(value){
+  if(value.isEmpty){
+    return 'This field is required';
+  }
+  else
+    {
+      return null;
+    }
+  }
+  createAccount(){
+  if(form.currentState!.validate()){
+    form.currentState!.save();
+    navigation.navigateTo(Routes.signUpPageOne);
+  }
+  }
+
 }

@@ -1,11 +1,13 @@
 import 'package:consultarer/screen/auth/sign_up_view_model.dart';
 import 'package:consultarer/screen/auth/signup_screen.dart';
 import 'package:consultarer/util/color.dart';
+import 'package:consultarer/util/dimen.dart';
 import 'package:consultarer/util/text_style.dart';
 import 'package:consultarer/widgets/button.dart';
 import 'package:consultarer/widgets/drop_down.dart';
 import 'package:consultarer/widgets/text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
 
 class SignUpPageThree extends ViewModelWidget<SignUpViewModel> {
@@ -26,75 +28,94 @@ class SignUpPageThree extends ViewModelWidget<SignUpViewModel> {
             dropDownHint: model.education,
             groupValue:  model.education,
             onChanged: (value)=> model.selectEducation(value)),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('University/School', style: textFieldLabel.copyWith(color: Colors.black),),
-            SizedBox(
-              height: 50,
-              width: 80,
-              child: ConsultButton(
-                title: 'Add',
-                titleStyle: buttonStyle,
-                buttonColor: ConsultColor.redButtonColor,
-                onPressed: (){},
-              ),
-            ),
-            ]),
-            ConsultTextField(label: 'University/School', controller: universityController),
-            ConsultTextField(label: 'Area Of Study', controller: areaOfStudyController),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Column(
-                  children: [
-                    Text('Start Year', style: textFieldLabel.copyWith(color: Colors.black)),
-                    SizedBox(
-                      height: 50,
-                      width: 80,
-                      child: ConsultDropDown(
-                        dropDownList: model.startYear,
-                        dropDownHint: model.startYearValue,
-                        groupValue: model.startYearValue,
-                        onChanged: (value)=>model.selectYear(value)),
-                    )
-                  ],
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(Dimens.roundedBorder),
                 ),
-                SizedBox(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('End Year', style: textFieldLabel.copyWith(color: Colors.black)),
-                      SizedBox(
-                        height: 50,
-                        width: 80,
-                        child: ConsultDropDown(
-                          dropDownList: model.startYear,
-                          dropDownHint: model.startYear[0],
-                          groupValue: model.startYearValue,
-                          onChanged: (value)=>model.selectYear(value),
+                      Text('University/School', style: textFieldLabel.copyWith(color: Colors.black),),
+                      ConsultTextField(label: 'University/School', controller: universityController),
+                      ConsultTextField(label: 'Area Of Study', controller: areaOfStudyController),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Column(
+                            children: [
+                              Text('Start Year', style: textFieldLabel.copyWith(color: Colors.black)),
+                              SizedBox(
+                                height: 50,
+                                width: 80,
+                                child: ConsultDropDown(
+                                    dropDownList: model.startYear,
+                                    dropDownHint: model.startYearValue,
+                                    groupValue: model.startYearValue,
+                                    onChanged: (value)=>model.selectYear(value)),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            child: Column(
+                              children: [
+                                Text('End Year', style: textFieldLabel.copyWith(color: Colors.black)),
+                                SizedBox(
+                                  height: 50,
+                                  width: 80,
+                                  child: ConsultDropDown(
+                                    dropDownList: model.startYear,
+                                    dropDownHint: model.startYear[0],
+                                    groupValue: model.startYearValue,
+                                    onChanged: (value)=>model.selectYear(value),
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: SizedBox(
+                          height: 50,
+                          width: 80,
+                          child: ConsultButton(
+                            title: 'Add',
+                            titleStyle: buttonStyle,
+                            buttonColor: ConsultColor.redButtonColor,
+                            onPressed: (){},
+                          ),
                         ),
-                      )
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.only(top:8.0),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Career', style: textFieldLabel.copyWith(color: Colors.black, fontSize: 14)),
+                              Row(
+                                children: [
+                                  Text('I am a student', style: textFieldLabel,),
+                                  Switch(
+                                      activeTrackColor: Colors.red,
+                                      value: model.isSwitch, onChanged: (value)=>model.toggleSwitch(value))
+                                ],
+                              ),
+                            ]),
+                      ),
                     ],
                   ),
-                )
-              ],
-            ),
-        Padding(
-          padding: const EdgeInsets.only(top:8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Career', style: textFieldLabel.copyWith(color: Colors.black, fontSize: 14)),
-                Row(
-                  children: [
-                    Text('I am a student', style: textFieldLabel,),
-                    Switch(
-                        activeTrackColor: Colors.red,
-                        value: model.isSwitch, onChanged: (value)=>model.toggleSwitch(value))
-                  ],
                 ),
-              ]),
-        ),
+              ),
+            ),
+
+
         ConsultTextField(label: 'Current Employment',controller: previousController,),
         Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
