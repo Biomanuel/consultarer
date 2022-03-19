@@ -20,9 +20,9 @@ class ConsultDropDown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(5.0),
       child: Container(
-        height: 60,
+        height: 50,
         decoration: BoxDecoration(
           color: ConsultColor.textFieldColor,
           borderRadius: BorderRadius.circular(Dimens.roundedBorder),
@@ -37,13 +37,13 @@ class ConsultDropDown extends StatelessWidget {
                 isExpanded: true,
                 style: textFieldLabel.copyWith(color: Colors.black),
                 value: groupValue,
-                hint: Text(dropDownHint),
+                hint: Text(dropDownHint, style: textFieldLabel,),
                 icon: Icon(Icons.keyboard_arrow_down),
                 items: dropDownList.map((value) {
                   return DropdownMenuItem(
                     child: ListTile(
                         selectedTileColor: ConsultColor.textFieldColor,
-                        title: Text(value)),
+                        title: Text(value, style: textFieldLabel,)),
                     value: value,
                   );
                 }).toList()),

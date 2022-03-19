@@ -17,14 +17,16 @@ class SignUpPageTwo extends ViewModelWidget<SignUpViewModel> {
       children: [
         ConsultDropDown(
           dropDownList: model.categories,
-          groupValue: model.categories[0],
-          dropDownHint: model.categories[0],
+          groupValue: model.categoryValue,
+          dropDownHint: model.categoryValue,
+          onChanged: (value)=> model.selectCategory(value),
         ),
-        Text('Subcategory'),
+        Text('Subcategory', style: textFieldLabel.copyWith(color: Colors.black)),
         ConsultDropDown(
-          dropDownList: model.categories,
-          groupValue: model.categories[0],
-          dropDownHint: model.categories[0],
+          dropDownList: model.subCategories,
+          groupValue: model.subCategoryValue,
+          dropDownHint: model.subCategoryValue,
+          onChanged: (value)=>model.selectSubCategory(value),
         ),
         Align(
           alignment: Alignment.centerRight,
@@ -41,19 +43,20 @@ class SignUpPageTwo extends ViewModelWidget<SignUpViewModel> {
         ),
         ConsultDropDown(
           dropDownList: model.country,
-          groupValue: model.country[0],
-          dropDownHint: model.country[0],
+          groupValue: model.countryValue,
+          dropDownHint: model.countryValue,
+          onChanged: (value)=> model.selectCountry(value),
         ),
         ConsultDropDown(
           dropDownList: model.state,
-          groupValue: model.state[0],
-          dropDownHint: model.state[0],
+          groupValue: model.stateValue,
+          dropDownHint: model.stateValue,
         ),
-        Text('Preferred Language'),
+        Text('Preferred Language', style: textFieldLabel.copyWith(color: Colors.black),),
         ConsultDropDown(
-          dropDownList: model.categories,
-          groupValue: model.categories[0],
-          dropDownHint: model.categories[0],
+          dropDownList: model.language,
+          groupValue: model.languageValue,
+          dropDownHint: model.languageValue,
         ),
         Align(
           alignment: Alignment.centerRight,

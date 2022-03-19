@@ -29,7 +29,7 @@ class ConsultTextField extends StatelessWidget {
         children: [
           Card(
             color: isLogin?Colors.white:ConsultColor.textFieldColor,
-            // elevation: isLogin?5:0,
+            elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(Dimens.roundedBorder),
               side: BorderSide(color:  Colors.grey),
@@ -41,7 +41,7 @@ class ConsultTextField extends StatelessWidget {
               onTap: () {},
               enableSuggestions: true,
               decoration: InputDecoration(
-                label: Text(label),
+                label: Text(label, style: textFieldLabel,),
                 hintStyle: textFieldLabel,
                 border: OutlineInputBorder(
                   borderSide: BorderSide.none,

@@ -70,29 +70,32 @@ class _LoginScreenState extends State<LoginScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            Text('Let\'s TAKE it all', style: letsTextStyle,),
+                            Text('Let\'s take it all', style: letsTextStyle,),
                             Text('Virtual', style: letsTextStyle.copyWith(fontSize: 39, fontWeight: FontWeight.w700),),
                           ],
                         ),
                         Form(
-                          child: Column(
-                          children: [
-                            ConsultTextField(
-                              isLogin: true,
-                              controller: model.emailController,
-                                label: 'Email or username',
-                              keyboardType: TextInputType.emailAddress,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top:30.0),
+                            child: Column(
+                            children: [
+                              ConsultTextField(
+                                isLogin: true,
+                                controller: model.emailController,
+                                  label: 'Email or username',
+                                keyboardType: TextInputType.emailAddress,
+                              ),
+                              ConsultTextField(
+                                isLogin: true,
+                                label: 'Password',
+                                  keyboardType: TextInputType.visiblePassword,
+                                  controller: model.passwordController,
+                                onPressed: ()=>model.toggleVisibility(),
+                                obscureText: model.obscureText,
+                                suffixIcon: model.obscureText?Icons.visibility_off:Icons.visibility,
+                              ),
+                            ],
                             ),
-                            ConsultTextField(
-                              isLogin: true,
-                              label: 'Password',
-                                keyboardType: TextInputType.visiblePassword,
-                                controller: model.passwordController,
-                              onPressed: ()=>model.toggleVisibility(),
-                              obscureText: model.obscureText,
-                              suffixIcon: model.obscureText?Icons.visibility_off:Icons.visibility,
-                            ),
-                          ],
                           ),
                         ),
                         ConsultButton(

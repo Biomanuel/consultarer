@@ -40,7 +40,23 @@ class SignUpPageOne extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: AuthAppBar(action: Row(children: [Text('Skip', style: textFieldLabel.copyWith(color: Colors.black, fontWeight: FontWeight.w700),), Icon(Icons.arrow_forward, size: 18,)],),onTapAction: (){},),
+                        child: AuthAppBar(
+                          action: Row(
+                            children: [
+                              Text(
+                                'Skip',
+                                style: textFieldLabel.copyWith(
+                                    color: Colors.black,
+                                    ),
+                              ),
+                              Icon(
+                                Icons.arrow_forward,
+                                size: 18,
+                              )
+                            ],
+                          ),
+                          onTapAction: () {},
+                        ),
                       ),
                       Expanded(
                         child: Padding(
@@ -93,4 +109,3 @@ class SignUpPageOne extends StatelessWidget {
     }
   }
 }
-

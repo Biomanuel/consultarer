@@ -1,9 +1,16 @@
 import 'package:stacked/stacked.dart';
 import 'package:flutter/material.dart';
 class SignUpViewModel extends IndexTrackingViewModel {
-  String education = 'High School';
   bool isVisible = true;
-  List<String> educationLevel = [
+  bool isSwitch = false;
+  String education = 'High School';
+  String categoryValue = 'Categories';
+  String subCategoryValue = 'Subcategories' ;
+  String countryValue = 'Country';
+  String stateValue  = 'State/Province';
+  String languageValue ='English';
+  String startYearValue =  '2002';
+  final List<String> educationLevel = [
     'High School',
     'College Degree',
     'Undergraduate',
@@ -11,24 +18,76 @@ class SignUpViewModel extends IndexTrackingViewModel {
     'Ph.D',
     'Professor',
   ];
-
-  List<String> categories = [
+ final  List<String> categories = [
     'Categories',
+    'Hello',
   ];
-  List<String> country = [
+  final List<String> subCategories = [
+    'Subcategories',
+    'Heyy',
+  ];
+  final List<String> country = [
     'Country',
+    'Nigeria',
+    'Ghana',
   ];
-  List<String> state = [
+  final List<String> language = [
+    'English',
+    'Yoruba',
+    'Hausa',
+  ];
+ final List<String> state = [
     'State/Province',
+    'Ondo'
   ];
-  List<String> employment = [
+  final List<String> employment = [
     'State/Province',
+    'Ibadan',
+    'Province',
   ];
-  List<String> startYear = [
+  final List<String> startYear = [
     '2002',
-  ];List<String> expertise = [
-    'Expertise',
+    '2003',
+    '2004',
+    '2005',
   ];
+
+  final List<String> expertise = [
+    'Expertise',
+    'Expertis',
+    'Experti',
+    'Expert',
+  ];
+
+toggleSwitch(value){
+  isSwitch = value;
+  notifyListeners();
+}
+  selectEducation(value){
+    education = value;
+    notifyListeners();
+  }
+onChangeDropDown({value, initialValue}){
+  initialValue = value;
+  notifyListeners();
+}
+selectYear(value){
+    startYearValue = value;
+    notifyListeners();
+}
+  selectCategory(value){
+    categoryValue = value;
+    notifyListeners();
+  }
+  selectSubCategory(value){
+    subCategoryValue = value;
+    notifyListeners();
+  }
+  selectCountry(value){
+    countryValue = value;
+    notifyListeners();
+  }
+
 
   // String
   toggleVisibility() {

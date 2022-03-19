@@ -23,12 +23,13 @@ class SignUpPageThree extends ViewModelWidget<SignUpViewModel> {
       children: [
         ConsultDropDown(
             dropDownList: model.educationLevel,
-            dropDownHint: model.educationLevel[0],
-            groupValue:  model.educationLevel[0], ),
+            dropDownHint: model.education,
+            groupValue:  model.education,
+            onChanged: (value)=> model.selectEducation(value)),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('University/School'),
+            Text('University/School', style: textFieldLabel.copyWith(color: Colors.black),),
             SizedBox(
               height: 50,
               width: 80,
@@ -45,46 +46,60 @@ class SignUpPageThree extends ViewModelWidget<SignUpViewModel> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Expanded(
+                Column(
+                  children: [
+                    Text('Start Year', style: textFieldLabel.copyWith(color: Colors.black)),
+                    SizedBox(
+                      height: 50,
+                      width: 80,
+                      child: ConsultDropDown(
+                        dropDownList: model.startYear,
+                        dropDownHint: model.startYearValue,
+                        groupValue: model.startYearValue,
+                        onChanged: (value)=>model.selectYear(value)),
+                    )
+                  ],
+                ),
+                SizedBox(
                   child: Column(
                     children: [
-                      Text('Start Year'),
+                      Text('End Year', style: textFieldLabel.copyWith(color: Colors.black)),
                       SizedBox(
-                        height: 60,
+                        height: 50,
                         width: 80,
                         child: ConsultDropDown(
                           dropDownList: model.startYear,
                           dropDownHint: model.startYear[0],
-                          groupValue: model.startYear[0],
+                          groupValue: model.startYearValue,
+                          onChanged: (value)=>model.selectYear(value),
                         ),
                       )
                     ],
                   ),
-                ),
-                Expanded(
-                  child: SizedBox(
-                    child: Column(
-                      children: [
-                        Text('End Year'),
-                        SizedBox(
-                          height: 60,
-                          width: 80,
-                          child: ConsultDropDown(
-                            dropDownList: model.startYear,
-                            dropDownHint: model.startYear[0],
-                            groupValue: model.startYear[0],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
                 )
               ],
             ),
+        Padding(
+          padding: const EdgeInsets.only(top:8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Career', style: textFieldLabel.copyWith(color: Colors.black, fontSize: 14)),
+                Row(
+                  children: [
+                    Text('I am a student', style: textFieldLabel,),
+                    Switch(
+                        activeTrackColor: Colors.red,
+                        value: model.isSwitch, onChanged: (value)=>model.toggleSwitch(value))
+                  ],
+                ),
+              ]),
+        ),
+        ConsultTextField(label: 'Current Employment',controller: previousController,),
         Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Previous Employment'),
+              Text('Previous Employment', style: textFieldLabel.copyWith(color: Colors.black)),
               SizedBox(
                 height: 50,
                 width: 80,
@@ -98,10 +113,11 @@ class SignUpPageThree extends ViewModelWidget<SignUpViewModel> {
             ]),
         ConsultTextField(label: 'Previous Employment',controller: previousController,),
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Age Group'),
+            Text('Age Group', style: textFieldLabel.copyWith(color: Colors.black)),
             SizedBox(
-              height: 60,
+              height: 50,
               width: 80,
               child: ConsultDropDown(
                 dropDownList: model.startYear,

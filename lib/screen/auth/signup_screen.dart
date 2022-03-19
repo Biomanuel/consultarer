@@ -54,7 +54,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            Text('Let\'s TAKE it all', style: letsTextStyle,),
+                            Text('Let\'s take it all', style: letsTextStyle,),
                             Text('Virtual', style: letsTextStyle.copyWith(fontSize: 39, fontWeight: FontWeight.w700),),
                           ],
                         ),
@@ -125,7 +125,6 @@ class AuthAppBar extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical:15.0),
           child: SizedBox(
               width: 200,
-              height: 20,
               child:Image.asset(Assets.logo),
                ),
         ),
