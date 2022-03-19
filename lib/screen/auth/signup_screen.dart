@@ -16,28 +16,28 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   var videoController;
   @override
-  void initState() {
-    super.initState();
-    videoController = VideoPlayerController.asset(Assets.loginVideo)
-      ..initialize().then((_) {
-        videoController.play();
-        videoController.setLooping(true);
-        setState(() {});
-      });
-  }
-
-  void dispose() {
-    super.dispose();
-    videoController.pause();
-    videoController.dispose();
-  }
-  @override
+  // void initState() {
+  //   super.initState();
+  //   videoController = VideoPlayerController.asset(Assets.loginVideo)
+  //     ..initialize().then((_) {
+  //       videoController.play();
+  //       videoController.setLooping(true);
+  //       setState(() {});
+  //     });
+  // }
+  //
+  // void dispose() {
+  //   super.dispose();
+  //   videoController.pause();
+  //   videoController.dispose();
+  // }
+  // @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Stack(
           children: [
-            VideoBackground(videoController: videoController),
+            // VideoBackground(videoController: videoController),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Column(

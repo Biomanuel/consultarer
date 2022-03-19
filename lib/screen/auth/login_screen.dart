@@ -24,21 +24,21 @@ class _LoginScreenState extends State<LoginScreen> {
 
   var videoController;
   @override
-  void initState() {
-    super.initState();
-    videoController = VideoPlayerController.asset(Assets.loginVideo)
-    ..initialize().then((_) {
-      videoController.play();
-      videoController.setLooping(true);
-      setState(() {});
-    });
-    }
+  // void initState() {
+  //   super.initState();
+  //   videoController = VideoPlayerController.asset(Assets.loginVideo)
+  //   ..initialize().then((_) {
+  //     videoController.play();
+  //     videoController.setLooping(true);
+  //     setState(() {});
+  //   });
+  //   }
 
-  void dispose() {
-    super.dispose();
-    videoController.pause();
-    videoController.dispose();
-  }
+  // void dispose() {
+  //   super.dispose();
+  //   videoController.pause();
+  //   videoController.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SafeArea(
         child: Stack(
           children: [
-            VideoBackground(videoController: videoController),
+            // VideoBackground(videoController: videoController),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0,),
               child: SingleChildScrollView(
@@ -172,25 +172,25 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
-class VideoBackground extends StatelessWidget {
-  const VideoBackground({
-    Key? key,
-    required this.videoController,
-  }) : super(key: key);
-
-   final videoController;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox.expand(
-      child: FittedBox(
-        fit: BoxFit.fill,
-        child: SizedBox(
-          width: videoController.value.size?.width ?? 0,
-          height: videoController.value.size?.height ?? 0,
-          child: VideoPlayer(videoController),
-        ),
-      ),
-    );
-  }
-}
+// class VideoBackground extends StatelessWidget {
+//   const VideoBackground({
+//     Key? key,
+//     required this.videoController,
+//   }) : super(key: key);
+//
+//    final videoController;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox.expand(
+//       child: FittedBox(
+//         fit: BoxFit.fill,
+//         child: SizedBox(
+//           width: videoController.value.size?.width ?? 0,
+//           height: videoController.value.size?.height ?? 0,
+//           child: VideoPlayer(videoController),
+//         ),
+//       ),
+//     );
+//   }
+// }
