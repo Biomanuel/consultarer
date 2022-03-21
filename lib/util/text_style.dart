@@ -7,6 +7,16 @@ final textFieldLabel = GoogleFonts.poppins(
   fontSize: 12,
   color:Color(0xff7A7A7A),
 );
+final lightTextFieldLabel = GoogleFonts.poppins(
+  fontWeight: FontWeight.w400,
+  fontSize: 12,
+  color:Color(0xff7A7A7A),
+);
+final cardText = GoogleFonts.poppins(
+  fontWeight: FontWeight.w600,
+  fontSize: 8,
+  color:Colors.black,
+);
 final titleStyle = GoogleFonts.poppins(
   fontWeight: FontWeight.w700,
   fontSize: 14,

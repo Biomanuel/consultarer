@@ -1,8 +1,8 @@
 import 'package:animations/animations.dart';
-import 'package:consultarer/screen/auth/sign_up_page_four.dart';
-import 'package:consultarer/screen/auth/sign_up_page_three.dart';
-import 'package:consultarer/screen/auth/sign_up_page_two.dart';
-import 'package:consultarer/screen/auth/sign_up_view_model.dart';
+import 'package:consultarer/screen/auth/individual_page_three.dart';
+import 'package:consultarer/screen/auth/individual_page_two.dart';
+import 'package:consultarer/screen/auth/individual_page_one.dart';
+import 'package:consultarer/screen/auth/individual_sign_up_view_model.dart';
 import 'package:consultarer/screen/auth/signup_screen.dart';
 import 'package:consultarer/util/text_style.dart';
 import 'package:consultarer/widgets/button.dart';
@@ -10,15 +10,15 @@ import 'package:consultarer/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-class SignUpPageOne extends StatelessWidget {
-  const SignUpPageOne({Key? key}) : super(key: key);
+class IndividualSignUpScreen extends StatelessWidget {
+  const IndividualSignUpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: ViewModelBuilder<SignUpViewModel>.reactive(
-            viewModelBuilder: () => SignUpViewModel(),
+        child: ViewModelBuilder<IndividualSignUpViewModel>.reactive(
+            viewModelBuilder: () => IndividualSignUpViewModel(),
             disposeViewModel: false,
             builder: (context, model, _) {
               return WillPopScope(
@@ -66,24 +66,27 @@ class SignUpPageOne extends StatelessWidget {
                       ),
                       Container(
                         height: 70,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            ConsultButton(
-                              title: 'Back',
-                              onPressed: () {
-                                model.previousPage(context);
-                              },
-                              buttonColor: Colors.white,
-                            ),
-                            ConsultButton(
-                              title: 'Next',
-                              onPressed: () {
-                                model.switchToPage3();
-                              },
-                              buttonColor: Colors.white,
-                            ),
-                          ],
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ConsultButton(
+                                title: 'Back',
+                                onPressed: () {
+                                  model.previousPage(context);
+                                },
+                                buttonColor: Colors.white,
+                              ),
+                              ConsultButton(
+                                title: model.currentIndex==2?'Finish':'Next',
+                                onPressed: () {
+                                  model.nextPage();
+                                },
+                                buttonColor: Colors.white,
+                              ),
+                            ],
+                          ),
                         ),
                       )
                     ],
@@ -99,13 +102,13 @@ class SignUpPageOne extends StatelessWidget {
   Widget getCurrentPage(int index) {
     switch (index) {
       case 0:
-        return SignUpPageTwo();
+        return IndividualSignUpPageOne();
       case 1:
-        return SignUpPageThree();
+        return IndividualSignUpPageTwo();
       case 2:
-        return SignUpPageFour();
+        return IndividualSignUpPageThree();
       default:
-        return SignUpPageTwo();
+        return IndividualSignUpPageOne();
     }
   }
 }

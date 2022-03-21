@@ -20,33 +20,30 @@ class ConsultButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: MaterialButton(
-        elevation: 5,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(isRow?Dimens.roundedBorderSocial:Dimens.roundedBorder)
-        ),
-        onPressed: onPressed,
-        height: 50,
-        color: buttonColor,
-        child: isRow?Row(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircleAvatar(
-                backgroundColor: Colors.white,
-                child: Icon(buttonIcon, color: iconColor,)),
-            Align(
-              alignment: Alignment.center,
-              child: Padding(
-                padding: const EdgeInsets.only(left:80.0),
-                child: Text(title, style: titleStyle,),
-              ),
-            ),
-
-          ],
-        ): Text(title, style: titleStyle,) ,
+    return MaterialButton(
+      elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(isRow?Dimens.roundedBorderSocial:Dimens.roundedBorder)
       ),
+      onPressed: onPressed,
+      height: 50,
+      color: buttonColor,
+      child: isRow?Row(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircleAvatar(
+              backgroundColor: Colors.white,
+              child: Icon(buttonIcon, color: iconColor,)),
+          Align(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: const EdgeInsets.only(left:80.0),
+              child: Text(title, style: titleStyle,),
+            ),
+          ),
+
+        ],
+      ): Text(title, style: titleStyle,) ,
     );
   }
 }

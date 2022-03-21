@@ -1,7 +1,11 @@
+import 'package:consultarer/app/app_setup.router.dart';
 import 'package:consultarer/screen/auth/signup_screen.dart';
 import 'package:consultarer/util/text_style.dart';
 import 'package:consultarer/widgets/button.dart';
 import 'package:flutter/material.dart';
+import 'package:stacked_services/stacked_services.dart';
+
+import '../../app/app_setup.locator.dart';
 
 class JoinAsScreen extends StatelessWidget {
   const JoinAsScreen({Key? key}) : super(key: key);
@@ -33,8 +37,7 @@ class JoinAsScreen extends StatelessWidget {
                     child: ConsultButton(
                       title: 'Individual',
                       titleStyle: textFieldLabel.copyWith(fontSize: 22),
-                      onPressed: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => SignUpScreen())),
+                      onPressed: () => locator<NavigationService>().navigateTo(Routes.signUpDetailsScreen)
                     ),
                   ),
                   Padding(
@@ -46,8 +49,7 @@ class JoinAsScreen extends StatelessWidget {
                     child: ConsultButton(
                       title: 'Organisation',
                       titleStyle: textFieldLabel.copyWith(fontSize: 22),
-                      onPressed: () => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SignUpScreen())),),
+                      onPressed: () => locator<NavigationService>().navigateTo(Routes.orgDetailsScreen),),
                   )
                 ],
               ),

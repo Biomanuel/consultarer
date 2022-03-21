@@ -1,9 +1,11 @@
 import 'package:consultarer/screen/auth/join_ass_screen.dart';
+import 'package:consultarer/screen/auth/org_details_screen.dart';
+import 'package:consultarer/screen/auth/org_screen.dart';
 import 'package:consultarer/screen/auth/sign_up_details.dart';
-import 'package:consultarer/screen/auth/sign_up_page_one.dart';
+import 'package:consultarer/screen/auth/individual_screen.dart';
 import 'package:consultarer/screen/auth/signup_screen.dart';
 import 'package:consultarer/screen/splash_screen.dart';
-import 'package:consultarer/screen/workplace_screen.dart';
+import 'package:consultarer/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked/stacked_annotations.dart';
@@ -16,10 +18,12 @@ import '../screen/auth/login_screen.dart';
     MaterialRoute(page: SplashScreen, initial: true),
     MaterialRoute(page: LoginScreen),
     MaterialRoute(page: SignUpScreen),
-    MaterialRoute(page: WorkPlaceScreen),
-    MaterialRoute(page: SignUpPageOne),
+    MaterialRoute(page: HomeScreen),
     MaterialRoute(page: JoinAsScreen),
     MaterialRoute(page: SignUpDetailsScreen),
+    MaterialRoute(page: OrgDetailsScreen),
+    MaterialRoute(page: OrgSignUpScreen),
+    MaterialRoute(page: IndividualSignUpScreen),
   ],
   dependencies: [
     LazySingleton(classType: NavigationService),

@@ -1,5 +1,5 @@
-import 'package:consultarer/screen/auth/sign_up_page_one.dart';
-import 'package:consultarer/screen/auth/sign_up_view_model.dart';
+import 'package:consultarer/screen/auth/individual_screen.dart';
+import 'package:consultarer/screen/auth/individual_sign_up_view_model.dart';
 import 'package:consultarer/screen/auth/signup_screen.dart';
 import 'package:consultarer/util/text_style.dart';
 import 'package:consultarer/widgets/button.dart';
@@ -23,8 +23,8 @@ class SignUpDetailsScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: ViewModelBuilder<SignUpViewModel>.reactive(
-              viewModelBuilder: () => SignUpViewModel(),
+          child: ViewModelBuilder<IndividualSignUpViewModel>.reactive(
+              viewModelBuilder: () => IndividualSignUpViewModel(),
               builder: (context, model, _) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -60,6 +60,7 @@ class SignUpDetailsScreen extends StatelessWidget {
                               controller: phoneController,
                               label: 'Phone Number',
                               keyboardType: TextInputType.phone,
+                              suffixWidget: Text('(Optional)', style: lightTextFieldLabel,),
                             ),
                             ConsultTextField(
                                 validator: (value)=>model.validateDetailsField(value),

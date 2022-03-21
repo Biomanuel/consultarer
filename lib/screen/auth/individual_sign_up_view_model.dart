@@ -4,7 +4,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../../app/app_setup.locator.dart';
 import '../../app/app_setup.router.dart';
-class SignUpViewModel extends IndexTrackingViewModel {
+class IndividualSignUpViewModel extends IndexTrackingViewModel {
   final navigation = locator<NavigationService>();
   final form = GlobalKey<FormState>();
   bool isVisible = true;
@@ -104,11 +104,22 @@ selectYear(value){
     notifyListeners();
   }
 
+  bool nextPage() {
+  if (currentIndex ==2){
+    navigation.navigateTo(Routes.workPlaceScreen);
+  }
+    if (currentIndex >= 0) setIndex(currentIndex + 1);
+    return false;
+  }
+
   void switchToPage1() {
     setIndex(0);
   }
   void switchToPage2() {
     setIndex(1);
+  }
+  void switchToPage3() {
+    setIndex(2);
   }
 
   bool previousPage(context) {
@@ -119,9 +130,7 @@ selectYear(value){
     return false;
   }
 
-  void switchToPage3() {
-    setIndex(2);
-  }
+
   validateDetailsField(value){
   if(value.isEmpty){
     return 'This field is required';
@@ -134,7 +143,7 @@ selectYear(value){
   createAccount(){
   if(form.currentState!.validate()){
     form.currentState!.save();
-    navigation.navigateTo(Routes.signUpPageOne);
+    navigation.navigateTo(Routes.individualSignUpScreen);
   }
   }
 

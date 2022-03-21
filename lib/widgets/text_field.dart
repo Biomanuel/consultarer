@@ -9,9 +9,11 @@ class ConsultTextField extends StatelessWidget {
   final bool obscureText;
   final IconData? suffixIcon;
   final Function()? onPressed;
+  final Widget? suffixWidget;
   final FormFieldValidator<String>? validator;
   final bool isLogin;
   const ConsultTextField({
+    this.suffixWidget,
     this.validator,
     this.isLogin = false,
     this.keyboardType,
@@ -30,6 +32,7 @@ class ConsultTextField extends StatelessWidget {
       child: Stack(
         children: [
           TextFormField(
+            textInputAction: label =='Password'?TextInputAction.done:TextInputAction.next,
             validator: validator,
             obscureText: obscureText,
             controller: controller,
@@ -37,6 +40,7 @@ class ConsultTextField extends StatelessWidget {
             onTap: () {},
             enableSuggestions: true,
             decoration: InputDecoration(
+              suffix: suffixWidget,
               filled: true,
               fillColor: isLogin?Colors.white:ConsultColor.textFieldColor,
               hintText: label,

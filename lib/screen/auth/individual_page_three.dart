@@ -1,4 +1,4 @@
-import 'package:consultarer/screen/auth/sign_up_view_model.dart';
+import 'package:consultarer/screen/auth/individual_sign_up_view_model.dart';
 import 'package:consultarer/util/dimen.dart';
 import 'package:consultarer/util/text_style.dart';
 import 'package:consultarer/widgets/drop_down.dart';
@@ -6,8 +6,8 @@ import 'package:consultarer/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-class SignUpPageFour extends ViewModelWidget<SignUpViewModel> {
-  const SignUpPageFour({Key? key}) : super(key: key);
+class IndividualSignUpPageThree extends ViewModelWidget<IndividualSignUpViewModel> {
+  const IndividualSignUpPageThree({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, model) {
