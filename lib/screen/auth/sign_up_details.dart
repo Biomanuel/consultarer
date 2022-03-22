@@ -1,11 +1,11 @@
-import 'package:consultarer/screen/auth/individual_screen.dart';
-import 'package:consultarer/screen/auth/individual_sign_up_view_model.dart';
-import 'package:consultarer/screen/auth/signup_screen.dart';
 import 'package:consultarer/util/text_style.dart';
 import 'package:consultarer/widgets/button.dart';
 import 'package:consultarer/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+
+import '../../widgets/auth/auth_appbar.dart';
+import 'individual/individual_sign_up_view_model.dart';
 
 class SignUpDetailsScreen extends StatelessWidget {
   const SignUpDetailsScreen({

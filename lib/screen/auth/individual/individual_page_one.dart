@@ -1,12 +1,11 @@
-import 'package:consultarer/screen/auth/individual_sign_up_view_model.dart';
-import 'package:consultarer/screen/auth/signup_screen.dart';
-import 'package:consultarer/util/color.dart';
 import 'package:consultarer/util/dimen.dart';
 import 'package:consultarer/util/text_style.dart';
 import 'package:consultarer/widgets/button.dart';
 import 'package:consultarer/widgets/drop_down.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+
+import 'individual_sign_up_view_model.dart';
 
 class IndividualSignUpPageOne extends ViewModelWidget<IndividualSignUpViewModel> {
   const IndividualSignUpPageOne({Key? key}) : super(key: key);
@@ -46,8 +45,9 @@ class IndividualSignUpPageOne extends ViewModelWidget<IndividualSignUpViewModel>
                     width: 80,
                     child: ConsultButton(
                       title: 'Add',
-                      titleStyle: buttonStyle,
-                      buttonColor: ConsultColor.redButtonColor,
+                      titleStyle: buttonStyle.copyWith(color: Colors.black),
+                      buttonColor: Colors.transparent,
+                      borderSide: BorderSide(color: Colors.grey),
                       onPressed: (){},
                     ),
                   ),
@@ -97,8 +97,9 @@ class IndividualSignUpPageOne extends ViewModelWidget<IndividualSignUpViewModel>
             width: 80,
             child: ConsultButton(
               title: 'Add',
-              titleStyle: buttonStyle,
-              buttonColor: ConsultColor.redButtonColor,
+              titleStyle: buttonStyle.copyWith(color: Colors.black),
+              buttonColor: Colors.transparent,
+              borderSide: BorderSide(color: Colors.grey),
               onPressed: (){},
             ),
           ),

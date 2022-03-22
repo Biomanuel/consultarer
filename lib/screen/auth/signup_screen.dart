@@ -5,6 +5,8 @@ import 'package:consultarer/util/text_style.dart';
 import 'package:consultarer/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../widgets/auth/auth_appbar.dart';
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
@@ -106,31 +108,3 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 }
 
-class AuthAppBar extends StatelessWidget {
-  final Widget action;
-  final Function()? onTapAction;
-  const AuthAppBar({
-    this.onTapAction,
-   required this.action,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical:15.0),
-          child: SizedBox(
-              width: 200,
-              child:Image.asset(Assets.logo),
-               ),
-        ),
-        GestureDetector(
-            onTap: onTapAction,
-            child: action,
-        )],
-    );
-  }
-}

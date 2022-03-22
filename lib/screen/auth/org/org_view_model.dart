@@ -3,7 +3,7 @@ import 'package:stacked/stacked.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import '../../app/app_setup.router.dart';
+import '../../../app/app_setup.router.dart';
 class OrgSignUpViewModel extends IndexTrackingViewModel{
   final navigation = locator<NavigationService>();
   final form = GlobalKey<FormState>();
@@ -57,11 +57,14 @@ class OrgSignUpViewModel extends IndexTrackingViewModel{
     setIndex(0);
   }
   void switchToPage2() {
-    setIndex(1);
+    if(currentIndex==2){
+      navigation.navigateTo(Routes.workPlaceScreen);
+    }
+    else{
+      setIndex(1);
+    }
   }
-  void switchToPage3() {
-    setIndex(2);
-  }
+
 
   bool previousPage(context) {
     if (currentIndex == 0){
@@ -79,5 +82,8 @@ class OrgSignUpViewModel extends IndexTrackingViewModel{
       form.currentState!.save();
       navigation.navigateTo(Routes.orgSignUpScreen);
     }
+  }
+  skipAuth(){
+    navigation.navigateTo(Routes.workPlaceScreen);
   }
 }

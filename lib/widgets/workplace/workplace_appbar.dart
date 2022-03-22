@@ -88,7 +88,10 @@ class WorkplaceAppBar extends ViewModelWidget<HomeViewModel> {
       backgroundColor: Colors.white,
       leading: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Image.asset(Assets.favicon),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(Assets.favicon),
+        ),
       ),
       title: Text('WORKPLACE', style: titleStyle),
       actions: [
@@ -96,7 +99,7 @@ class WorkplaceAppBar extends ViewModelWidget<HomeViewModel> {
         InkWell(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: CircleAvatar(child: Image.asset(Assets.actionImage)),
+            child: CircleAvatar(backgroundImage: AssetImage(Assets.actionImage)),
           ),
         )
       ],

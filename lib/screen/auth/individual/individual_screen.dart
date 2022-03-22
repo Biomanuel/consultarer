@@ -1,14 +1,14 @@
 import 'package:animations/animations.dart';
-import 'package:consultarer/screen/auth/individual_page_three.dart';
-import 'package:consultarer/screen/auth/individual_page_two.dart';
-import 'package:consultarer/screen/auth/individual_page_one.dart';
-import 'package:consultarer/screen/auth/individual_sign_up_view_model.dart';
-import 'package:consultarer/screen/auth/signup_screen.dart';
+import 'package:consultarer/screen/auth/individual/individual_page_three.dart';
+import 'package:consultarer/screen/auth/individual/individual_page_two.dart';
+import 'package:consultarer/screen/auth/individual/individual_page_one.dart';
 import 'package:consultarer/util/text_style.dart';
 import 'package:consultarer/widgets/button.dart';
-import 'package:consultarer/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+
+import '../../../widgets/auth/auth_appbar.dart';
+import 'individual_sign_up_view_model.dart';
 
 class IndividualSignUpScreen extends StatelessWidget {
   const IndividualSignUpScreen({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class IndividualSignUpScreen extends StatelessWidget {
             builder: (context, model, _) {
               return WillPopScope(
                 onWillPop: () async {
-                  return model.previousPage(context);
+                  return model.previousPage();
                 },
                 child: PageTransitionSwitcher(
                   reverse: model.reverse,
@@ -55,7 +55,7 @@ class IndividualSignUpScreen extends StatelessWidget {
                               )
                             ],
                           ),
-                          onTapAction: () {},
+                          onTapAction: ()=> model.skipAuth(),
                         ),
                       ),
                       Expanded(
@@ -74,7 +74,7 @@ class IndividualSignUpScreen extends StatelessWidget {
                               ConsultButton(
                                 title: 'Back',
                                 onPressed: () {
-                                  model.previousPage(context);
+                                  model.previousPage();
                                 },
                                 buttonColor: Colors.white,
                               ),

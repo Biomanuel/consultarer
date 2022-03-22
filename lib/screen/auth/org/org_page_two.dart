@@ -1,5 +1,4 @@
-import 'package:consultarer/screen/auth/individual_sign_up_view_model.dart';
-import 'package:consultarer/screen/auth/org_view_model.dart';
+import 'package:consultarer/screen/auth/org/org_view_model.dart';
 import 'package:consultarer/util/dimen.dart';
 import 'package:consultarer/util/text_style.dart';
 import 'package:consultarer/widgets/drop_down.dart';

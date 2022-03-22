@@ -1,11 +1,12 @@
-import 'package:consultarer/screen/auth/individual_sign_up_view_model.dart';
-import 'package:consultarer/screen/auth/org_view_model.dart';
+
+import 'package:consultarer/screen/auth/org/org_view_model.dart';
 import 'package:consultarer/screen/auth/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import '../../util/text_style.dart';
-import '../../widgets/button.dart';
-import '../../widgets/text_field.dart';
+import '../../../util/text_style.dart';
+import '../../../widgets/auth/auth_appbar.dart';
+import '../../../widgets/button.dart';
+import '../../../widgets/text_field.dart';
 
 class OrgDetailsScreen extends StatelessWidget {
   const OrgDetailsScreen({Key? key}) : super(key: key);

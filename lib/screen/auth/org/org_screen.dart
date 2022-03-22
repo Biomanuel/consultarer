@@ -1,12 +1,14 @@
 import 'package:animations/animations.dart';
-import 'package:consultarer/screen/auth/org_page_one.dart';
-import 'package:consultarer/screen/auth/org_page_two.dart';
-import 'package:consultarer/screen/auth/org_view_model.dart';
+import 'package:consultarer/screen/auth/org/org_page_one.dart';
+import 'package:consultarer/screen/auth/org/org_page_two.dart';
+import 'package:consultarer/screen/auth/org/org_view_model.dart';
 import 'package:consultarer/screen/auth/signup_screen.dart';
 import 'package:consultarer/util/text_style.dart';
 import 'package:consultarer/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+
+import '../../../widgets/auth/auth_appbar.dart';
 
 class OrgSignUpScreen extends StatelessWidget {
   const OrgSignUpScreen({Key? key}) : super(key: key);
@@ -50,10 +52,10 @@ class OrgSignUpScreen extends StatelessWidget {
                               Icon(
                                 Icons.arrow_forward,
                                 size: 18,
-                              )
+                              ),
                             ],
                           ),
-                          onTapAction: () {},
+                          onTapAction: () => model.skipAuth(),
                         ),
                       ),
                       Expanded(

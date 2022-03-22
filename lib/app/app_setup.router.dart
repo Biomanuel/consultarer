@@ -10,11 +10,11 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 
-import '../screen/auth/individual_screen.dart';
+import '../screen/auth/individual/individual_screen.dart';
 import '../screen/auth/join_ass_screen.dart';
 import '../screen/auth/login_screen.dart';
-import '../screen/auth/org_details_screen.dart';
-import '../screen/auth/org_screen.dart';
+import '../screen/auth/org/org_details_screen.dart';
+import '../screen/auth/org/org_screen.dart';
 import '../screen/auth/sign_up_details.dart';
 import '../screen/auth/signup_screen.dart';
 import '../screen/splash_screen.dart';

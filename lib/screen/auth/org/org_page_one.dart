@@ -1,5 +1,4 @@
-import 'package:consultarer/screen/auth/individual_sign_up_view_model.dart';
-import 'package:consultarer/screen/auth/org_view_model.dart';
+import 'package:consultarer/screen/auth/org/org_view_model.dart';
 import 'package:consultarer/screen/auth/signup_screen.dart';
 import 'package:consultarer/util/color.dart';
 import 'package:consultarer/util/dimen.dart';
@@ -47,8 +46,9 @@ class OrgSignUpPageOne extends ViewModelWidget<OrgSignUpViewModel> {
                     width: 80,
                     child: ConsultButton(
                       title: 'Add',
-                      titleStyle: buttonStyle,
-                      buttonColor: ConsultColor.redButtonColor,
+                      titleStyle: buttonStyle.copyWith(color: Colors.black),
+                      borderSide: BorderSide(color: Colors.grey),
+                      buttonColor: Colors.transparent,
                       onPressed: (){},
                     ),
                   ),
@@ -93,8 +93,9 @@ class OrgSignUpPageOne extends ViewModelWidget<OrgSignUpViewModel> {
             width: 80,
             child: ConsultButton(
               title: 'Add',
-              titleStyle: buttonStyle,
-              buttonColor: ConsultColor.redButtonColor,
+              titleStyle: buttonStyle.copyWith(color: Colors.black),
+              borderSide: BorderSide(color: Colors.grey),
+              buttonColor: Colors.transparent,
               onPressed: (){},
             ),
           ),

@@ -8,7 +8,9 @@ class ConsultButton extends StatelessWidget {
   final Color? iconColor;
   final TextStyle? titleStyle;
   final Function()? onPressed;
+  final BorderSide borderSide;
   const ConsultButton({
+    this.borderSide= BorderSide.none,
     required this.title,
     this.isRow = false,
     this.onPressed,
@@ -21,9 +23,10 @@ class ConsultButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      elevation: 5,
+      elevation:borderSide!=BorderSide.none?0: 5,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(isRow?Dimens.roundedBorderSocial:Dimens.roundedBorder)
+        borderRadius: BorderRadius.circular(isRow?Dimens.roundedBorderSocial:Dimens.roundedBorder),
+        side: borderSide,
       ),
       onPressed: onPressed,
       height: 50,

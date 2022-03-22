@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../../app/app_setup.locator.dart';
+import '../../widgets/auth/auth_appbar.dart';
 
 class JoinAsScreen extends StatelessWidget {
   const JoinAsScreen({Key? key}) : super(key: key);

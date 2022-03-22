@@ -1,12 +1,7 @@
-import 'package:consultarer/screen/auth/individual_page_two.dart';
 import 'package:consultarer/util/color.dart';
 import 'package:consultarer/util/dimen.dart';
 import 'package:consultarer/util/text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
-
-import '../screen/auth/individual_sign_up_view_model.dart';
-
 class ConsultDropDown extends StatelessWidget {
   final void Function(dynamic)? onChanged;
   final String groupValue;

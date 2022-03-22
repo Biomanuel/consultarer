@@ -1,14 +1,13 @@
-import 'package:consultarer/screen/auth/sign_up_details.dart';
 import 'package:consultarer/util/assets.dart';
 import 'package:consultarer/util/color.dart';
 import 'package:consultarer/util/text_style.dart';
 import 'package:consultarer/widgets/button.dart';
 import 'package:consultarer/widgets/text_field.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
-
+import 'package:video_player/video_player.dart';
+import '../../widgets/video_player.dart';
 import 'login_view_model.dart';
 class LoginScreen extends StatefulWidget {
 
@@ -23,21 +22,21 @@ class _LoginScreenState extends State<LoginScreen> {
 
   var videoController;
   @override
-  // void initState() {
-  //   super.initState();
-  //   videoController = VideoPlayerController.asset(Assets.loginVideo)
-  //   ..initialize().then((_) {
-  //     videoController.play();
-  //     videoController.setLooping(true);
-  //     setState(() {});
-  //   });
-  //   }
+  void initState() {
+    super.initState();
+    videoController = VideoPlayerController.asset(Assets.loginVideo)
+    ..initialize().then((_) {
+      videoController.play();
+      videoController.setLooping(true);
+      setState(() {});
+    });
+    }
 
-  // void dispose() {
-  //   super.dispose();
-  //   videoController.pause();
-  //   videoController.dispose();
-  // }
+  void dispose() {
+    super.dispose();
+    videoController.pause();
+    videoController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SafeArea(
         child: Stack(
           children: [
-            // VideoBackground(videoController: videoController),
+            VideoBackground(videoController: videoController),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0,),
               child: SingleChildScrollView(
@@ -171,25 +170,3 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
-// class VideoBackground extends StatelessWidget {
-//   const VideoBackground({
-//     Key? key,
-//     required this.videoController,
-//   }) : super(key: key);
-//
-//    final videoController;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return SizedBox.expand(
-//       child: FittedBox(
-//         fit: BoxFit.fill,
-//         child: SizedBox(
-//           width: videoController.value.size?.width ?? 0,
-//           height: videoController.value.size?.height ?? 0,
-//           child: VideoPlayer(videoController),
-//         ),
-//       ),
-//     );
-//   }
-// }

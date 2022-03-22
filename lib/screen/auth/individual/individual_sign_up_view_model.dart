@@ -2,8 +2,10 @@ import 'package:stacked/stacked.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import '../../app/app_setup.locator.dart';
-import '../../app/app_setup.router.dart';
+import '../../../app/app_setup.locator.dart';
+import '../../../app/app_setup.router.dart';
+
+
 class IndividualSignUpViewModel extends IndexTrackingViewModel {
   final navigation = locator<NavigationService>();
   final form = GlobalKey<FormState>();
@@ -108,7 +110,7 @@ selectYear(value){
   if (currentIndex ==2){
     navigation.navigateTo(Routes.workPlaceScreen);
   }
-    if (currentIndex >= 0) setIndex(currentIndex + 1);
+    if (currentIndex >= 0&& currentIndex<2) setIndex(currentIndex + 1);
     return false;
   }
 
@@ -122,9 +124,9 @@ selectYear(value){
     setIndex(2);
   }
 
-  bool previousPage(context) {
+  bool previousPage() {
     if (currentIndex == 0){
-      Navigator.pop(context);
+      navigation.previousRoute;
     };
     if (currentIndex > 0) setIndex(currentIndex - 1);
     return false;
@@ -146,5 +148,7 @@ selectYear(value){
     navigation.navigateTo(Routes.individualSignUpScreen);
   }
   }
-
+  skipAuth(){
+    navigation.navigateTo(Routes.workPlaceScreen);
+  }
 }
