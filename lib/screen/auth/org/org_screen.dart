@@ -81,7 +81,7 @@ class OrgSignUpScreen extends StatelessWidget {
                               ConsultButton(
                                 title:model.currentIndex==1?'Finish':'Next',
                                 onPressed: () {
-                                  model.switchToPage2();
+                                  model.nextPage();
                                 },
                                 buttonColor: Colors.white,
                               ),

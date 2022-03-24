@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../widgets/workplace/workplace_appbar.dart';
 import '../../home_view_model.dart';
 import 'package:stacked/stacked.dart';
-
 import 'consult_user_page.dart';
 import 'inquiry_page.dart';
 class WorkplaceScreen extends StatelessWidget {

@@ -5,9 +5,12 @@ class ConsultUserCard extends StatelessWidget {
   final Function()? onPressed;
   final String name;
   final String userName;
+  final bool isFavTapped;
+
   const ConsultUserCard({
     required this.name,
     required this.userName,
+    this.isFavTapped = false,
     this.onPressed,
     Key? key}) : super(key: key);
 
@@ -25,11 +28,15 @@ class ConsultUserCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: IconButton(
-                onPressed:onPressed,
-                icon: Icon(Icons.favorite_outline_rounded),
+            Expanded(
+              child: Align(
+                alignment: Alignment.topRight,
+                child: IconButton(
+                  onPressed:onPressed,
+                  icon: Icon(
+                    isFavTapped?Icons.favorite:Icons.favorite_outline,
+                    color: isFavTapped?Colors.red:Colors.black,),
+                ),
               ),
             ),
             Align(
@@ -38,14 +45,16 @@ class ConsultUserCard extends StatelessWidget {
                 backgroundImage: AssetImage(Assets.actionImage),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(name, style: lightTextFieldLabel.copyWith(fontSize: 14, color: Colors.black, fontWeight: FontWeight.w600)),
-                Icon(Icons.verified, color: Colors.blue, size: 15,)
-              ],
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(name, style: lightTextFieldLabel.copyWith(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w600)),
+                  Icon(Icons.verified, color: Colors.blue, size: 15,)
+                ],
+              ),
             ),
-            Text(userName, style: lightTextFieldLabel.copyWith(fontSize: 14, color: Colors.black, fontWeight: FontWeight.w600),),
+            Text(userName, style: lightTextFieldLabel.copyWith(fontSize: 12, color: Colors.black, fontWeight: FontWeight.w600),),
             Text('Bio: Lorem Ipsum dolor sit am', overflow: TextOverflow.ellipsis,style: cardText,),
             Expanded(
               child: Row(
@@ -53,7 +62,7 @@ class ConsultUserCard extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.star, color: Colors.blue,size: 15,),
+                      Icon(Icons.star, color: Colors.blue,size: 20,),
                       Text('4.5(25)', style: cardText,),
                     ],
                   ),

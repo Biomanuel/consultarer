@@ -16,7 +16,8 @@ class InquiryPage extends ViewModelWidget<HomeViewModel> {
           var data = model.inquiryCardData[index];
           return InquiryCard(
             userName: data.userName,
-            imageUrl: data.imageUrl,
+           userImageUrl: data.userImageUrl,
+            inquiryImageUrl: data.inquiryImageUrl,
           );});
   }
 }

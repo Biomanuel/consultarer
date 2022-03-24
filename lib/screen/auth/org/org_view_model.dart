@@ -53,22 +53,28 @@ class OrgSignUpViewModel extends IndexTrackingViewModel{
       return null;
     }
   }
-  void switchToPage1() {
-    setIndex(0);
-  }
-  void switchToPage2() {
-    if(currentIndex==2){
-      navigation.navigateTo(Routes.workPlaceScreen);
-    }
-    else{
-      setIndex(1);
-    }
-  }
+  // void switchToPage1() {
+  //   setIndex(0);
+  // }
+  // void switchToPage2() {
+  //   if(currentIndex==1){
+  //     navigation.replaceWith(Routes.workPlaceScreen);
+  //   }
+  //   else{
+  //     setIndex(1);
+  //   }
+  // }
 
-
+  bool nextPage() {
+    if (currentIndex ==1){
+      navigation.replaceWith(Routes.workPlaceScreen);
+    }
+    if (currentIndex >= 0&& currentIndex<1) setIndex(currentIndex + 1);
+    return false;
+  }
   bool previousPage(context) {
     if (currentIndex == 0){
-      Navigator.pop(context);
+      navigation..clearStackAndShow(Routes.joinAsScreen);
     };
     if (currentIndex > 0) setIndex(currentIndex - 1);
     return false;

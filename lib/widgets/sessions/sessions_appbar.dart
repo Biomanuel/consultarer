@@ -18,7 +18,9 @@ class SessionsAppBar extends ViewModelWidget<HomeViewModel> {
       backgroundColor: Colors.white,
       leading: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Image.asset(Assets.actionImage),
+        child: InkWell(
+            onTap: ()=>model.onTapProfile(),
+            child: Image.asset(Assets.actionImage)),
       ),
       title: Text('OPEN SESSIONS', style: titleStyle),
     );

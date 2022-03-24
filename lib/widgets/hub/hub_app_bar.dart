@@ -18,11 +18,14 @@ class HubAppBar extends ViewModelWidget<HomeViewModel> {
       backgroundColor: Colors.white,
       leading: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Image.asset(Assets.actionImage),
+        child: InkWell(
+            onTap: ()=> model.onTapProfile(),
+            child: Image.asset(Assets.actionImage)),
       ),
       title: Text('HUB', style: titleStyle),
       actions: [
         InkWell(
+          onTap: ()=>model.makeNewPost(),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: CircleAvatar(

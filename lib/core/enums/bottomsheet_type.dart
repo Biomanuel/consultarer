@@ -1,0 +1,4 @@
+enum BottomSheetTypee {
+  ProfileBottomSheet,
+  Generic,
+}
