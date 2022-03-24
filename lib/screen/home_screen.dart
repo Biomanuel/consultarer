@@ -1,3 +1,4 @@
+import 'package:consultarer/screen/chat/messages_screen.dart';
 import 'package:consultarer/screen/home_view_model.dart';
 import 'package:consultarer/screen/hub/hub_screen.dart';
 import 'package:consultarer/screen/sessions/sessions_screen.dart';
@@ -25,8 +26,6 @@ class HomeScreen extends HookWidget {
               items: List.generate(bottomNavBarItem.length, (index) =>bottomNavBarItem[index]),
               currentIndex: model.navIndex,
               onTap: (index)=> model.OnItemSelected(index),
-
-
             ),
             body: getCurrentPage(model.navIndex, tabController));
       }
@@ -40,6 +39,8 @@ class HomeScreen extends HookWidget {
         return HubScreen();
       case 2:
         return SessionsScreen();
+      case 4:
+        return MessagesScreen(tabController: tabController);
       default:
         return WorkplaceScreen(tabController: tabController);
     }

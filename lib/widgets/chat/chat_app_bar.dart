@@ -1,3 +1,4 @@
+import 'package:consultarer/core/enums/chat_enums.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/enums/workplace_enums.dart';
@@ -7,8 +8,8 @@ import '../../util/dimen.dart';
 import '../../util/text_style.dart';
 import 'package:stacked/stacked.dart';
 
-class WorkplaceAppBar extends ViewModelWidget<HomeViewModel> {
-  const WorkplaceAppBar({
+class ChatAppBar extends ViewModelWidget<HomeViewModel> {
+  const ChatAppBar({
     Key? key,
     required this.tabController,
   }) : super(key: key);
@@ -39,7 +40,7 @@ class WorkplaceAppBar extends ViewModelWidget<HomeViewModel> {
                         ),
                         fillColor: Colors.white,
                         suffixIcon: Icon(Icons.search),
-                        hintText: 'Search',
+                        hintText: 'Find chat',
                         suffixIconColor: Colors.black,
                       ),
                     ),
@@ -56,10 +57,10 @@ class WorkplaceAppBar extends ViewModelWidget<HomeViewModel> {
                             onTap: (index)=>model.tabSelected(index),
                             tabs: [
                               Tab(
-                                child:Text(getTabBarTitleCapitalized(WorkPlaceTitles.consultAUser)),),
+                                child:Text(getChatTitle(ChatTitles.AllOConversations)),),
                               Tab(
                                 // icon: Icon(Icons.sort),
-                                child: Text(getTabBarTitleCapitalized(WorkPlaceTitles.inquiry_request)),
+                                child: Text(getChatTitle(ChatTitles.MessageORequest)),
                               ),
                             ],
                             indicator: UnderlineTabIndicator(
@@ -87,17 +88,7 @@ class WorkplaceAppBar extends ViewModelWidget<HomeViewModel> {
           child: Image.asset(Assets.favicon),
         ),
       ),
-      title: Text('WORKPLACE', style: titleStyle),
-      actions: [
-        IconButton(onPressed: (){}, icon: Icon(Icons.favorite, color: Colors.black,),),
-        InkWell(
-          onTap: ()=> model.onTapProfile(),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CircleAvatar(backgroundImage: AssetImage(Assets.actionImage)),
-          ),
-        )
-      ],
+      title: Text('MESSAGES', style: titleStyle),
     );
   }
 }

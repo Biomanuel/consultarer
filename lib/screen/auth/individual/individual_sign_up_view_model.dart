@@ -108,7 +108,7 @@ selectYear(value){
 
   bool nextPage() {
   if (currentIndex ==2){
-    navigation.navigateTo(Routes.workPlaceScreen);
+    navigation.replaceWith(Routes.workPlaceScreen);
   }
     if (currentIndex >= 0&& currentIndex<2) setIndex(currentIndex + 1);
     return false;
@@ -126,7 +126,7 @@ selectYear(value){
 
   bool previousPage() {
     if (currentIndex == 0){
-      navigation.previousRoute;
+      navigation..clearStackAndShow(Routes.joinAsScreen);
     };
     if (currentIndex > 0) setIndex(currentIndex - 1);
     return false;
@@ -149,6 +149,6 @@ selectYear(value){
   }
   }
   skipAuth(){
-    navigation.navigateTo(Routes.workPlaceScreen);
+    navigation.replaceWith(Routes.workPlaceScreen);
   }
 }

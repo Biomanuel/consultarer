@@ -1,13 +1,14 @@
-import 'package:consultarer/util/assets.dart';
 import 'package:consultarer/util/dimen.dart';
 import 'package:consultarer/util/text_style.dart';
 import 'package:flutter/material.dart';
 class InquiryCard extends StatelessWidget {
   final String userName;
-  final String imageUrl;
+  final String userImageUrl;
+  final String inquiryImageUrl;
   const InquiryCard({
     required this.userName,
-    required this.imageUrl,
+    required this.inquiryImageUrl,
+    required this.userImageUrl,
     Key? key}) : super(key: key);
 
   @override
@@ -24,7 +25,7 @@ class InquiryCard extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Image.asset(Assets.inquiryImage),
+            Image.asset(inquiryImageUrl),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(top:8.0),
@@ -34,7 +35,7 @@ class InquiryCard extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 10,
-                          backgroundImage: AssetImage(imageUrl),
+                          backgroundImage: AssetImage(userImageUrl),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left:5.0),

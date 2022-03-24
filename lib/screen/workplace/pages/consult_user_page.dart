@@ -17,7 +17,8 @@ class ConsultUserPage extends ViewModelWidget<HomeViewModel> {
           return ConsultUserCard(
             name: data.name,
             userName: data.userName,
-            onPressed: (){},
+           isFavTapped: data.isFavTapped,
+            onPressed: (){}
     );});
   }
 }
